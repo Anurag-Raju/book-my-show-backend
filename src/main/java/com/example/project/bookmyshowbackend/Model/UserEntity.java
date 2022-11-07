@@ -22,6 +22,10 @@ public class UserEntity {
     private int id;
     private String name;
     private String mobileNo;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)// cascade if we save the parent child automatically
+    private List<TicketEntity> listOfTickets;//gets saved and can use child functions
 
-    private List<TicketEntity> listOfTickets;
+
+
+
 }

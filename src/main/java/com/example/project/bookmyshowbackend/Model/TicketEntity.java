@@ -35,5 +35,5 @@ public class TicketEntity {
 
     //ShowEntity
 
-    //ListShowTicketEntity
+    //List<ShowSeatsEntity>
 }
