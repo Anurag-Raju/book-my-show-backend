@@ -1,12 +1,11 @@
 package com.example.project.bookmyshowbackend.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -15,13 +14,23 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name="movies")
+@Builder
+@ToString
 public class MovieEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name="name",nullable = false)
     private String name;
-    @CreationTimestamp
-    Date releaseDate;
-    @OneToMany(cascade = CascadeType.ALL)
+
+
+    @Column(name = "release_date",columnDefinition = "DATE",nullable = false)
+    private LocalDate releaseDate;
+
+    @OneToMany(mappedBy = "movie",cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<ShowEntity> listOfShows;
 }

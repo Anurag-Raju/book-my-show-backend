@@ -1,26 +1,36 @@
 package com.example.project.bookmyshowbackend.Model;
 
 import com.example.project.bookmyshowbackend.enums.SeatType;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@Table(name = "theatre_seats")
+@ToString
 public class TheatreSeatEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int seatNo;
+
+    @Column(name = "seat_number",nullable = false)
+    private int seatNumber;
+
+    @Column(name = "rate",nullable = false)
     private int rate;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "seat_type",nullable = false)
     private SeatType seatType;
+
+    @ManyToOne
+    @JsonIgnore
+    private TheatreEntity theatre;
 }

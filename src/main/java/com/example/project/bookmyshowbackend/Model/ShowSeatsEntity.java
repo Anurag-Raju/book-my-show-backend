@@ -1,16 +1,11 @@
 package com.example.project.bookmyshowbackend.Model;
 
 import com.example.project.bookmyshowbackend.enums.SeatType;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -18,14 +13,37 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@Table(name = "show_seats")
+@ToString
 public class ShowSeatsEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "seat_number",nullable = false)
+    private int seatNumber;
+
+    @Column(name = "rate",nullable = false)
     private int rate;
-    private int seatNo;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "seat_type",nullable = false)
     private SeatType seatType;
-    private Boolean booked;
-    @CreationTimestamp
-    Date bookedAt;
+
+    @Column(name = "is_booked",columnDefinition = "bit(1) default 0",nullable = false)
+    private boolean booked;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "booked_at")
+    private Date bookedAt;
+
+    @ManyToOne
+    @JsonIgnore
+    private ShowEntity show;
+
+    @ManyToOne
+    @JsonIgnore
+    private TicketEntity ticket;
 }
