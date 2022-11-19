@@ -1,4 +1,10 @@
 package com.example.project.bookmyshowbackend.service;
 
-public class TheaterService {
+import com.example.project.bookmyshowbackend.dto.TheaterDto;
+
+public interface TheaterService {
+
+    TheaterDto addTheater(TheaterDto theaterDto);
+
+    TheaterDto getTheater(int id);
 }

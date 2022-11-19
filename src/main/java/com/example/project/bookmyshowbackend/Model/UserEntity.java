@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
-@Builder
+@Builder//to create/build objects
 @ToString
 public class UserEntity {
 
@@ -25,7 +25,7 @@ public class UserEntity {
 
     @Column(name = "mobile",nullable = false)
     private String mobile;
-
+//bidirectional mapping
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)// cascade if we save the parent child automatically
     private List<TicketEntity> ticketEntities;//gets saved and can use child functions
 

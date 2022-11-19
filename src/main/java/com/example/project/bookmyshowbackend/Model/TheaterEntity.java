@@ -1,6 +1,5 @@
 package com.example.project.bookmyshowbackend.Model;
 
-import com.example.project.bookmyshowbackend.enums.SeatType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
@@ -13,7 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "theaters")
 @ToString
-public class TheatreEntity {
+@Builder
+public class TheaterEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,5 +34,5 @@ public class TheatreEntity {
 
     @OneToMany(mappedBy = "theater",cascade = CascadeType.ALL)
     @JsonIgnore
-    List<TheatreSeatEntity> seats;
+    List<TheaterSeatEntity> seats;
 }

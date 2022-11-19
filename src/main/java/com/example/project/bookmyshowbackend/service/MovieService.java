@@ -1,4 +1,9 @@
 package com.example.project.bookmyshowbackend.service;
 
-public class MovieService {
+import com.example.project.bookmyshowbackend.dto.MovieDto;
+
+public interface MovieService {
+    MovieDto addMovie(MovieDto movieDto);
+
+    MovieDto getMovie(int id);
 }
