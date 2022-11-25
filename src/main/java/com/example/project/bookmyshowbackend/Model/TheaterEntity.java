@@ -34,5 +34,5 @@ public class TheaterEntity {
 
     @OneToMany(mappedBy = "theater",cascade = CascadeType.ALL)
     @JsonIgnore
-    List<TheaterSeatEntity> seats;
+    List<TheaterSeatsEntity> seats;
 }

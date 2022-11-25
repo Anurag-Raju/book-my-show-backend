@@ -10,6 +10,7 @@ import java.util.Optional;
 public class UserConverter {
     public static UserEntity convertDtoToEntity(UserDto userDto){
         return UserEntity.builder().name(userDto.getName()).mobile(userDto.getMobileNo()).build();
+        //second method for creating object by using new keyword
     }
 
     public static UserDto convertEntityToDto(UserEntity userEntity){

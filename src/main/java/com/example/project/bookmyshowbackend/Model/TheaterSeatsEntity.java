@@ -14,14 +14,14 @@ import javax.persistence.*;
 @Builder
 @Table(name = "theatre_seats")
 @ToString
-public class TheaterSeatEntity {
+public class TheaterSeatsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "seat_number",nullable = false)
-    private int seatNumber;
+    private String seatNumber;
 
     @Column(name = "rate",nullable = false)
     private int rate;

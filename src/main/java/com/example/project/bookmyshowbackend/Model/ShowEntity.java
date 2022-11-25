@@ -47,6 +47,10 @@ public class ShowEntity {
     @JsonIgnore
     private MovieEntity movie;
 
+    @ManyToOne
+    @JsonIgnore
+    private TheaterEntity theater;
+
     @OneToMany(mappedBy = "show",cascade = CascadeType.ALL)
     @JsonIgnore
     private List<TicketEntity> tickets;
