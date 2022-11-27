@@ -1,11 +1,19 @@
 package com.example.project.bookmyshowbackend.dto;
 
+import com.example.project.bookmyshowbackend.Model.UserEntity;
 import lombok.*;
 
 @Builder
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 public class TicketDto {
+
+    int id;
+
+    String alloted_seats;
+
+    double amount;
+
+    UserDto userDto;
+
+    ShowDto showDto;
 }

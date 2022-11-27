@@ -3,6 +3,7 @@ package com.example.project.bookmyshowbackend.service.impl;
 import com.example.project.bookmyshowbackend.Model.*;
 import com.example.project.bookmyshowbackend.Repository.MovieRepository;
 import com.example.project.bookmyshowbackend.Repository.ShowRepository;
+import com.example.project.bookmyshowbackend.Repository.ShowSeatsRepository;
 import com.example.project.bookmyshowbackend.Repository.TheaterRepository;
 import com.example.project.bookmyshowbackend.converter.ShowConverter;
 import com.example.project.bookmyshowbackend.dto.ShowDto;
@@ -19,6 +20,8 @@ public class ShowServiceImpl implements ShowService {
     MovieRepository movieRepository;
     @Autowired
     TheaterRepository theaterRepository;
+    @Autowired
+    ShowSeatsRepository showSeatsRepository;
     @Override
     public ShowDto addShow(ShowDto showDto) {
         //we have partial show entity object
@@ -31,16 +34,25 @@ public class ShowServiceImpl implements ShowService {
         showEntity.setMovie(movieEntity);
         showEntity.setTheater(theaterEntity);
 
-        generateShowEntitySeats(theaterEntity.getSeats());
-//        showEntity=showRepository.save(showEntity);
-//        return showDto;
+        generateShowEntitySeats(theaterEntity.getSeats(),showEntity);
+        showEntity=showRepository.save(showEntity);
+        return showDto;
     }
-    public void generateShowEntitySeats(List<TheaterSeatsEntity> theaterSeatsEntityList){
+    public void generateShowEntitySeats(List<TheaterSeatsEntity> theaterSeatsEntityList,ShowEntity showEntity){
         List<ShowSeatsEntity> showSeatsEntityList=new ArrayList<>();
 
         for(TheaterSeatsEntity tse:theaterSeatsEntityList){
-            
+            ShowSeatsEntity showSeatsEntity=ShowSeatsEntity.builder().seatNumber(tse.getSeatNumber())
+                    .rate(tse.getRate())
+                    .build();
+
+            showSeatsEntityList.add(showSeatsEntity);
         }
+        //We need to set the show Entity for each of the ShowSeat
+        for(ShowSeatsEntity showSeatsEntity:showSeatsEntityList){
+            showSeatsEntity.setShow(showEntity);
+        }
+        showSeatsRepository.saveAll(showSeatsEntityList);
     }
 
     @Override

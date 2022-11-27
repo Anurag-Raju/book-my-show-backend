@@ -23,7 +23,7 @@ public class ShowSeatsEntity {
     private int id;
 
     @Column(name = "seat_number",nullable = false)
-    private int seatNumber;
+    private String seatNumber;
 
     @Column(name = "rate",nullable = false)
     private int rate;
