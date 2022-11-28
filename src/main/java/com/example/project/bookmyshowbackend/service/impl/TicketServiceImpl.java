@@ -81,9 +81,10 @@ public class TicketServiceImpl implements TicketService {
         }
         ticketEntity.setAlloted_seats(String.valueOf(bookedSeats));
         ticketEntity.setAmount(amount);
-        //connect in the show and the
-        //ShowEntity.setTickets();
-        //userEntity.setTickets();
+        //connect in the show and the user
+        showEntity.getTickets().add(ticketEntity);
+        //add the tickets in the tickets list of the user entity
+        userEntity.getTicketEntities().add(ticketEntity);
 
         ticketEntity=ticketRepository.save(ticketEntity);
         return TicketConverter.convertEntityToDto(ticketEntity);

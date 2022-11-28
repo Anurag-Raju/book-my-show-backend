@@ -1,6 +1,7 @@
 package com.example.project.bookmyshowbackend.dto;
 
 import com.example.project.bookmyshowbackend.Model.UserEntity;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 @Builder
@@ -12,8 +13,8 @@ public class TicketDto {
     String alloted_seats;
 
     double amount;
-
-    UserDto userDto;
+    @NotNull
+    UserDto userDto;//mandatory for me to fill this userDto value
 
     ShowDto showDto;
 }
