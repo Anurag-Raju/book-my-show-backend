@@ -1,6 +1,5 @@
 package com.example.project.bookmyshowbackend.dto;
 
-import com.example.project.bookmyshowbackend.Model.UserEntity;
 import com.sun.istack.NotNull;
 import lombok.*;
 

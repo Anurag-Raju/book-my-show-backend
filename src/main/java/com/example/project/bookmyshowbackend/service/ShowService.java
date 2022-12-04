@@ -1,10 +1,11 @@
 package com.example.project.bookmyshowbackend.service;
 
-import com.example.project.bookmyshowbackend.dto.ShowDto;
+import com.example.project.bookmyshowbackend.dto.EntryRequest.ShowEntryDto;
+import com.example.project.bookmyshowbackend.dto.ResponseDto.ShowResponseDto;
 
 public interface ShowService {
 
-    ShowDto addShow(ShowDto showDto);
+    ShowResponseDto addShow(ShowEntryDto showEntryDto);
 
-    ShowDto getShow(int id);
+//    ShowResponseDto getShow(int id);
 }

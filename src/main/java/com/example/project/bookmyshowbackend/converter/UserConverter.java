@@ -3,10 +3,8 @@ package com.example.project.bookmyshowbackend.converter;
 import com.example.project.bookmyshowbackend.Model.UserEntity;
 import com.example.project.bookmyshowbackend.dto.EntryRequest.UserEntryDto;
 import com.example.project.bookmyshowbackend.dto.ResponseDto.UserResponseDto;
-import com.example.project.bookmyshowbackend.dto.UserDto;
 import lombok.experimental.UtilityClass;
 
-import java.util.Optional;
 
 @UtilityClass//whose objects cannot be created/all the methods are static/only the methods can be called
 public class UserConverter {

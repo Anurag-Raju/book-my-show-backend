@@ -1,18 +1,19 @@
 package com.example.project.bookmyshowbackend.converter;
 
 import com.example.project.bookmyshowbackend.Model.MovieEntity;
-import com.example.project.bookmyshowbackend.dto.MovieDto;
+import com.example.project.bookmyshowbackend.dto.EntryRequest.MovieEntryDto;
+import com.example.project.bookmyshowbackend.dto.ResponseDto.MovieResponseDto;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class MovieConverter {
 
-    public static MovieEntity convertDtoToEntity(MovieDto movieDto){
-        return MovieEntity.builder().name(movieDto.getName())
-                .releaseDate(movieDto.getReleaseDate()).build();
+    public static MovieEntity convertDtoToEntity(MovieEntryDto movieEntryDto){
+        return MovieEntity.builder().name(movieEntryDto.getName())
+                .releaseDate(movieEntryDto.getReleaseDate()).build();
     }
-    public static MovieDto convertEntityToDto(MovieEntity movieEntity){
-        return MovieDto.builder().id(movieEntity.getId()).releaseDate(movieEntity.getReleaseDate())
+    public static MovieResponseDto convertEntityToDto(MovieEntity movieEntity){
+        return MovieResponseDto.builder().id(movieEntity.getId()).releaseDate(movieEntity.getReleaseDate())
                 .name(movieEntity.getName()).build();
     }
 }

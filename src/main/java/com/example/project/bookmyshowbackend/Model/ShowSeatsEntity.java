@@ -3,7 +3,6 @@ package com.example.project.bookmyshowbackend.Model;
 import com.example.project.bookmyshowbackend.enums.SeatType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;

@@ -1,5 +1,6 @@
 package com.example.project.bookmyshowbackend.dto;
 
+import com.example.project.bookmyshowbackend.enums.TheaterType;
 import lombok.*;
 
 import java.util.List;
@@ -18,6 +19,8 @@ public class TheaterDto {
     String address;
 
     String city;
+
+    TheaterType type;
 
     List<ShowDto> showDtoList;
 }

@@ -1,6 +1,6 @@
 package com.example.project.bookmyshowbackend.dto.EntryRequest;
 
-import com.example.project.bookmyshowbackend.dto.MovieDto;
+import com.example.project.bookmyshowbackend.dto.ResponseDto.MovieResponseDto;
 import com.example.project.bookmyshowbackend.dto.TheaterDto;
 import com.sun.istack.NotNull;
 import lombok.Builder;
@@ -16,7 +16,7 @@ public class ShowEntryDto {
     @NotNull
     LocalTime showTime;
     @NotNull
-    MovieDto movieDto;
+    MovieResponseDto movieResponseDto;
     @NotNull
     TheaterDto theaterDto;
 }

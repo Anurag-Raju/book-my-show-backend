@@ -1,9 +1,11 @@
 package com.example.project.bookmyshowbackend.Model;
 
+import com.example.project.bookmyshowbackend.enums.TheaterType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -32,7 +34,9 @@ public class TheaterEntity {
     @JsonIgnore
     List<ShowEntity> shows;
 
+    TheaterType type;
+
     @OneToMany(mappedBy = "theater",cascade = CascadeType.ALL)
     @JsonIgnore
-    List<TheaterSeatsEntity> seats;
+    List<TheaterSeatsEntity> seats=new ArrayList<>();
 }

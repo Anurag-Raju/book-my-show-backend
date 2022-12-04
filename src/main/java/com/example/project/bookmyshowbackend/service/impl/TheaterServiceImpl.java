@@ -7,12 +7,15 @@ import com.example.project.bookmyshowbackend.Repository.TheaterSeatsRepository;
 import com.example.project.bookmyshowbackend.converter.TheaterConverter;
 import com.example.project.bookmyshowbackend.dto.TheaterDto;
 import com.example.project.bookmyshowbackend.enums.SeatType;
+import com.example.project.bookmyshowbackend.enums.TheaterType;
 import com.example.project.bookmyshowbackend.service.TheaterService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class TheaterServiceImpl implements TheaterService {
     @Autowired
     TheaterRepository theaterRepository;
@@ -23,10 +26,17 @@ public class TheaterServiceImpl implements TheaterService {
        TheaterEntity theaterEntity= TheaterConverter.convertDtoToEntity(theaterDto);
 
        List<TheaterSeatsEntity> seats=createTheaterSeats();
+       theaterEntity.setSeats(seats);
+
+       theaterEntity.setSeats(null);
+       theaterEntity.setShows(null);
 
        for(TheaterSeatsEntity theaterSeatsEntity:seats){
            theaterSeatsEntity.setTheatre(theaterEntity);
        }
+       theaterEntity.setType(TheaterType.SINGLE);
+       log.info("The theater entity"+theaterEntity);
+
        theaterEntity=theaterRepository.save(theaterEntity);
         return theaterDto;
     }
